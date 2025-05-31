@@ -37,7 +37,7 @@ class TemplatesGroup : DefaultActionGroup(
         isSearchable = false
     }
 
-    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT
     override fun update(e: AnActionEvent) {
         val project: Project = e.project ?: return
 
@@ -60,8 +60,8 @@ class TemplatesGroup : DefaultActionGroup(
         val actions: MutableList<AnAction> = mutableListOf()
 
         for (action: CustomAction in TEMPLATES) {
-            if (!action.checkAvailability(context)) continue
             if (action !is AnAction) continue
+            if (!action.checkAvailability(context)) continue
             actions.add(action as AnAction)
         }
 

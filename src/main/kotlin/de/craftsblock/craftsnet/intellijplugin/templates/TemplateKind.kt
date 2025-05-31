@@ -17,8 +17,6 @@ data class TemplateKind(
     @NotNull val dynamicName: Boolean = (visibility == TemplateVisibility.JAVA_SOURCES)
 ) {
 
-    internal fun isAvailable(context: DataContext): Boolean {
-        return visibility.isAvailable(context)
-    }
+    internal fun isAvailable(context: DataContext): Boolean = visibility.isAvailable(context)
 
 }
