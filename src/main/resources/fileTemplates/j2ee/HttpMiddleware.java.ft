@@ -1,0 +1,18 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.middlewares.HttpMiddleware")
+#set($SIMPLE_NAME = "HttpMiddleware")
+
+import de.craftsblock.craftsnet.api.http.Exchange;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.api.middlewares.MiddlewareCallbackInfo;
+
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    @Override
+    public void handle(MiddlewareCallbackInfo callbackInfo, Exchange exchange) {
+#[[$END$]]#
+    }
+
+}

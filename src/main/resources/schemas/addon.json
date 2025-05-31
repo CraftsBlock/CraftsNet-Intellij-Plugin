@@ -1,0 +1,82 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Addon-Konfiguration",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Der Name des Addons",
+      "pattern": "^[a-zA-Z0-9]*$",
+      "minLength": 1
+    },
+    "main": {
+      "type": "string",
+      "description": "Die Main Classe des Addons",
+      "examples": [
+        "org.example.Main"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "description": "Die Version des Addons"
+    },
+    "description": {
+      "type": "string",
+      "description": "Die Beschreibung des Addons"
+    },
+    "website": {
+      "type": "string",
+      "description": "Die Website des Addons"
+    },
+    "author": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "Einzelner Autor als String"
+        },
+        {
+          "type": "array",
+          "description": "Mehrere Autoren als Array von Strings",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "depends": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "examples": []
+      }
+    },
+    "repositories": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^https?://[A-Za-z0-9.-]+(?::\\d+)?$",
+        "examples": [
+          "https://repo.craftsblock.de/releases",
+          "https://repo.craftsblock.de/experimental"
+        ]
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^([A-Za-z0-9_.-]+):([A-Za-z0-9_.-]+):([0-9A-Za-z_.-]+(?:-[A-Za-z0-9_.-]+)?)$",
+        "examples": [
+          "de.craftsblock:craftsnet:3.3.5-SNAPSHOT",
+          "de.craftsblock:craftscore:3.8.3-SNAPSHOT"
+        ]
+      }
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

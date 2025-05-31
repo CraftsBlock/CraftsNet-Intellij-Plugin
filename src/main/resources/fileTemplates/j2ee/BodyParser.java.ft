@@ -1,0 +1,31 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.http.body.BodyParser")
+#set($SIMPLE_NAME = "BodyParser")
+
+import de.craftsblock.craftsnet.api.http.Request;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+import org.jetbrains.annotations.Nullable;
+
+import java.io.InputStream;
+
+@AutoRegister
+public class ${NAME} extends #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end<#[[$body$]]#> {
+
+    public ${NAME}() {
+        super(#[[$contentType$]]#);
+    }
+
+    @Override
+    public @Nullable #[[$body$]]# parse(Request request, InputStream body) {
+        return #[[$null$]]#;
+    }
+
+    @Override
+    public boolean isParseable(String contentType) {
+        return super.isParseable(contentType);
+    }
+
+}

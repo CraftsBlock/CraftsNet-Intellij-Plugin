@@ -1,0 +1,29 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.session.drivers.SessionDriver")
+#set($SIMPLE_NAME = "SessionDriver")
+
+import de.craftsblock.craftsnet.api.session.Session;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+
+import java.io.IOException;
+
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    @Override
+    public void load(Session session, String sessionID) throws IOException {
+#[[$END$]]#
+    }
+
+    @Override
+    public void save(Session session, String sessionID) throws IOException {
+
+    }
+
+    @Override
+    public void destroy(Session session, String sessionID) throws IOException {
+
+    }
+
+}

@@ -1,0 +1,18 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.addon.services.ServiceLoader")
+#set($SIMPLE_NAME = "ServiceLoader")
+
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+
+@AutoRegister
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end<#[[$SPI$]]#> {
+
+    @Override
+    public boolean load(#[[$SPI$]]# provider) {
+        return #[[$FALSE$]]##[[$END$]]#;
+    }
+
+}

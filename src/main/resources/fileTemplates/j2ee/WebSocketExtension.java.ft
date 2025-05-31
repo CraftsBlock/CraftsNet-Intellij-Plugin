@@ -1,0 +1,29 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.websocket.extensions.WebSocketExtension")
+#set($SIMPLE_NAME = "WebSocketExtension")
+
+import de.craftsblock.craftsnet.api.websocket.Frame;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+import org.jetbrains.annotations.NotNull;
+
+@AutoRegister
+public class ${NAME} extends #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    public ${NAME}() {
+        super("#[[$ProtocolName$]]#");
+    }
+
+    @Override
+    public @NotNull Frame encode(@NotNull Frame frame) {
+        return frame;
+    }
+
+    @Override
+    public @NotNull Frame decode(@NotNull Frame frame) {
+        return frame;
+    }
+
+}

@@ -1,0 +1,36 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.http.encoding.StreamEncoder")
+#set($SIMPLE_NAME = "StreamEncoder")
+
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.InputStream;
+import java.io.OutputStream;
+
+@AutoRegister
+public class ${NAME} extends #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    public ${NAME}(@NotNull String encodingName) {
+        super(encodingName);
+    }
+
+    @Override
+    public @NotNull OutputStream encodeOutputStream(@NotNull OutputStream raw) {
+        return super.encodeOutputStream(raw)#[[$END$]]#;
+    }
+
+    @Override
+    public @NotNull InputStream encodeInputStream(@NotNull InputStream raw) {
+        return super.encodeInputStream(raw);
+    }
+
+    @Override
+    public boolean isAvailable() {
+        return super.isAvailable();
+    }
+
+}

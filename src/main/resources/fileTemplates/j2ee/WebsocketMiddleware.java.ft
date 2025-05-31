@@ -1,0 +1,34 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.middlewares.WebsocketMiddleware")
+#set($SIMPLE_NAME = "WebsocketMiddleware")
+
+import de.craftsblock.craftsnet.api.middlewares.MiddlewareCallbackInfo;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.api.websocket.Frame;
+import de.craftsblock.craftsnet.api.websocket.SocketExchange;
+
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+#[[$END$]]#
+    @Override
+    public void handleConnect(MiddlewareCallbackInfo callbackInfo, SocketExchange exchange) {
+        #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end.super.handleConnect(callbackInfo, exchange);
+    }
+
+    @Override
+    public void handleDisconnect(MiddlewareCallbackInfo callbackInfo, SocketExchange exchange) {
+        #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end.super.handleDisconnect(callbackInfo, exchange);
+    }
+
+    @Override
+    public void handleMessageReceived(MiddlewareCallbackInfo callbackInfo, SocketExchange exchange, Frame frame) {
+        #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end.super.handleMessageReceived(callbackInfo, exchange, frame);
+    }
+
+    @Override
+    public void handleMessageSent(MiddlewareCallbackInfo callbackInfo, SocketExchange exchange, Frame frame) {
+        #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end.super.handleMessageSent(callbackInfo, exchange, frame);
+    }
+
+}

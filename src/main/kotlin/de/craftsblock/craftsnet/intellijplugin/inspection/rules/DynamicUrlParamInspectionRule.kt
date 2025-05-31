@@ -1,0 +1,52 @@
+package de.craftsblock.craftsnet.intellijplugin.inspection.rules
+
+import com.intellij.codeInspection.ProblemsHolder
+import com.intellij.psi.PsiLiteralExpression
+import com.intellij.psi.PsiMethod
+import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
+import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.RemoveElementQuickFix
+import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import kotlin.math.max
+
+class DynamicUrlParamInspectionRule(
+    private val argOffset: Int = 1
+) : CustomInspectionRule() {
+
+    override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
+        val parent = super.parent as? CustomAnnotatedInspection ?: return
+
+        val pathAttr = method.getAnnotation(parent.annotation)?.findAttributeValue("value") as? PsiLiteralExpression ?: return
+        val pathPattern = pathAttr.value as String
+        val dynamicGroups: List<String> = Utils.getDynamicUrlParams(pathPattern)
+
+        if (method.parameterList.parameters.size == dynamicGroups.size + argOffset) return
+
+        if (method.parameterList.parameters.size < dynamicGroups.size + argOffset) handleToFew(holder, method, dynamicGroups)
+        else handleToMany(holder, method, dynamicGroups)
+    }
+
+    private fun handleToFew(holder: ProblemsHolder, method: PsiMethod, dynamicGroups: List<String>) {
+        for ((i, paramName) in dynamicGroups.withIndex()) {
+            val index = max(i - argOffset, 0)
+            if (index > dynamicGroups.size) continue
+
+            val rule = ParameterInspectionRule(index + argOffset, paramName, "java.lang.String")
+            rule.adopt(parent!!)
+            rule.checkMethod(holder, method)
+        }
+    }
+
+    private fun handleToMany(holder: ProblemsHolder, method: PsiMethod, dynamicGroups: List<String>) {
+        for ((i, param) in method.parameterList.parameters.withIndex()) {
+            val index = i - argOffset
+            if (index < 0 || index < dynamicGroups.size) continue
+
+            registerProblem(
+                holder, param, "Found expected dynamic url parameter ${index + argOffset} while only having ${dynamicGroups.size}",
+                RemoveElementQuickFix()
+            )
+        }
+    }
+
+}

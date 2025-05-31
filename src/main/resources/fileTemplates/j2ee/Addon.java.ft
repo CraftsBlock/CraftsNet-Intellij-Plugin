@@ -1,0 +1,20 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.addon.Addon")
+#set($SIMPLE_NAME = "Addon")
+
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+
+public class ${NAME} extends #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    public ${NAME}() {
+
+    }
+
+    @Override
+    public void onEnable() {
+#[[$END$]]#
+    }
+
+}

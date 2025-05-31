@@ -1,0 +1,60 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>de.craftsblock.craftsnet.IntellijPlugin</id>
+
+    <name>CraftsNet Development</name>
+    <vendor email="admin@craftsblock.de" url="https://craftsblock.de">CraftsBlock</vendor>
+
+    <description>The official development tool for CraftsNet.</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <fileTemplateGroup implementation="de.craftsblock.craftsnet.intellijplugin.templates.CraftsNetTemplates"/>
+        <implicitUsageProvider implementation="de.craftsblock.craftsnet.intellijplugin.usage.CraftsNetImplicitUsageProvider"/>
+
+        <localInspection language="JAVA" id="InvalidRouteMethod" displayName="Route method inspection"
+                         groupName="CraftsNet inspections" enabledByDefault="true" level="ERROR"
+                         implementationClass="de.craftsblock.craftsnet.intellijplugin.inspection.builtin.RouteInspection"/>
+        <localInspection language="JAVA" id="InvalidSocketMethod" displayName="Socket method inspection"
+                         groupName="CraftsNet inspections" enabledByDefault="true" level="ERROR"
+                         implementationClass="de.craftsblock.craftsnet.intellijplugin.inspection.builtin.SocketInspection"/>
+        <localInspection language="JAVA" id="InvalidListenerMethod" displayName="Listener method inspection"
+                         groupName="CraftsNet inspections" enabledByDefault="true" level="ERROR"
+                         implementationClass="de.craftsblock.craftsnet.intellijplugin.inspection.builtin.ListenerAdapterInspection"/>
+
+        <psi.referenceContributor language="JSON" implementation="de.craftsblock.craftsnet.intellijplugin.schemas.AddonJsonReferenceContributor"/>
+
+        <postStartupActivity implementation="de.craftsblock.craftsnet.intellijplugin.startup.ModuleStartupActivity"/>
+    </extensions>
+
+    <extensions defaultExtensionNs="JavaScript.JsonSchema">
+        <ProviderFactory implementation="de.craftsblock.craftsnet.intellijplugin.schemas.AddonJsonSchemaProvider"/>
+    </extensions>
+
+    <applicationListeners>
+        <listener class="de.craftsblock.craftsnet.intellijplugin.listeners.ProjectChangeListener"
+                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
+    </applicationListeners>
+
+    <projectListeners>
+        <listener class="de.craftsblock.craftsnet.intellijplugin.listeners.ModuleChangeListener"
+                  topic="com.intellij.openapi.roots.ModuleRootListener"/>
+    </projectListeners>
+
+    <actions>
+        <group
+                id="NewCraftsNetFile"
+                class="de.craftsblock.craftsnet.intellijplugin.templates.TemplatesGroup"
+                text="CraftsNet"
+                popup="true"
+                icon="AllIcons.FileTypes.Java">
+            <add-to-group group-id="NewGroup1" anchor="after" relative-to-action="NewClass"/>
+        </group>
+    </actions>
+</idea-plugin>

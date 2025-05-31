@@ -1,0 +1,23 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.requirements.websocket.WebSocketRequirement")
+#set($SIMPLE_NAME = "WebSocketRequirement")
+
+import de.craftsblock.craftsnet.api.RouteRegistry;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+
+@AutoRegister
+public class ${NAME} extends #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end<#[[$RequireTarget$]]#> {
+
+    public ${NAME}() {
+        super(#[[$annotation$]]#);
+    }
+
+    @Override
+    public boolean applies(#[[$RequireTarget$]]# target, RouteRegistry.EndpointMapping endpointMapping) {
+        return #[[$false$]]#;
+    }
+
+}

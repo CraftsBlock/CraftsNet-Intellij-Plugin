@@ -1,0 +1,24 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.http.RequestHandler")
+#set($SIMPLE_NAME = "RequestHandler")
+
+import de.craftsblock.craftsnet.api.http.Exchange;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+import de.craftsblock.craftsnet.api.http.annotations.Route;
+import de.craftsblock.craftsnet.autoregister.meta.AutoRegister;
+
+@AutoRegister
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end {
+
+    public ${NAME}() {
+
+    }
+
+    @Route("#[[$END$]]#")
+    public void handle(Exchange exchange) {
+
+    }
+
+}
