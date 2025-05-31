@@ -1,56 +1,73 @@
+import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.22"
-    id("org.jetbrains.intellij") version "1.17.2"
+    id("org.jetbrains.kotlin.jvm") version "2.1.10"
+    id("org.jetbrains.intellij.platform") version "2.6.0"
+//    id("org.jetbrains.intellij.platform.migration") version "2.6.0"
 }
 
+val intellijVersion = "2025.1.1"
+val intellijType = IntelliJPlatformType.IntellijIdeaCommunity
+
 group = "de.craftsblock.craftsnet"
-version = "1.0-SNAPSHOT"
+version = "1.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-intellij {
-    version.set("2023.2.5")
-    type.set("IC") // Target IDE Platform
+dependencies {
+    intellijPlatform {
+        create(intellijType, intellijVersion)
 
-    plugins.set(
-        listOf(
-            "java"
-        )
-    )
+        bundledPlugin("com.intellij.java")
+        bundledPlugin("com.intellij.modules.json")
+
+        pluginVerifier()
+    }
 }
 
-tasks {
-    // Set the JVM compatibility versions
-    withType<JavaCompile> {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
-    }
+intellijPlatform {
 
-    patchPluginXml {
+    pluginConfiguration {
         version.set(project.version.toString())
-        sinceBuild.set("232")
-        untilBuild.set("242.*")
+
+        ideaVersion {
+            sinceBuild = "251"
+            untilBuild = "252.*"
+        }
     }
 
-    signPlugin {
+    signing {
         certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
         privateKey.set(System.getenv("PRIVATE_KEY"))
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
     }
 
-    publishPlugin {
+    publishing {
         token.set(System.getenv("PUBLISH_TOKEN"))
     }
 
-    runIde {
-        jvmArgs = listOf("-Xmx5g")
+    pluginVerification {
+        ides {
+            recommended()
+        }
     }
+
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.JVM_17)
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 }

@@ -69,3 +69,5 @@ bin/
 debug
 .idea
 .run
+.intellijPlatform
+.kotlin

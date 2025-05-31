@@ -37,7 +37,7 @@ class TemplatesGroup : DefaultActionGroup(
         isSearchable = false
     }
 
-    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.EDT
+    override fun getActionUpdateThread(): ActionUpdateThread = ActionUpdateThread.BGT
     override fun update(e: AnActionEvent) {
         val project: Project = e.project ?: return
 

@@ -20,9 +20,9 @@ abstract class CustomDialogTemplateAction(
 
     private var lastContext: DataContext? = null
 
-    override fun beforeActionPerformedUpdate(e: AnActionEvent) {
+    override fun update(e: AnActionEvent) {
         lastContext = e.dataContext
-        super.beforeActionPerformedUpdate(e)
+        super.update(e)
     }
 
     override fun buildDialog(
