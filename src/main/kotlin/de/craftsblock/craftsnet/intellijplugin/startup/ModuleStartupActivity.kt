@@ -2,7 +2,7 @@ package de.craftsblock.craftsnet.intellijplugin.startup
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity
-import de.craftsblock.craftsnet.intellijplugin.uitls.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 class ModuleStartupActivity : ProjectActivity {
 

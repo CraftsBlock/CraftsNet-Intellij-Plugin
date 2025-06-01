@@ -2,7 +2,7 @@ package de.craftsblock.craftsnet.intellijplugin.listeners
 
 import com.intellij.openapi.roots.ModuleRootEvent
 import com.intellij.openapi.roots.ModuleRootListener
-import de.craftsblock.craftsnet.intellijplugin.uitls.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 class ModuleChangeListener : ModuleRootListener {
 

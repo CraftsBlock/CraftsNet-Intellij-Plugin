@@ -4,10 +4,14 @@ import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog
 import com.intellij.ide.fileTemplates.FileTemplate
 import com.intellij.openapi.actionSystem.AnActionEvent
+import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiFile
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
+import org.jetbrains.annotations.NotNull
 import javax.swing.Icon
 
 
@@ -15,7 +19,8 @@ abstract class CustomDialogTemplateAction(
     text: String,
     private val title: String,
     icon: Icon,
-    private vararg val kinds: TemplateKind
+    private vararg val kinds: TemplateKind,
+    @NotNull val featureFlag: FeatureFlag = FeatureFlag.BASE
 ) : CreateFileFromTemplateAction(text, "Erstelle eine $text Datei", icon), CustomAction {
 
     private var lastContext: DataContext? = null
@@ -58,7 +63,12 @@ abstract class CustomDialogTemplateAction(
     }
 
     override fun checkAvailability(dataContext: DataContext): Boolean = isAvailable(dataContext)
-    override fun isAvailable(dataContext: DataContext): Boolean = kinds.any { kind -> kind.isAvailable(dataContext) }
+    override fun isAvailable(context: DataContext): Boolean {
+        val project: Project = CommonDataKeys.PROJECT.getData(context) ?: return false
+        if (!CraftsNetVersionUtils.isFeatureFlagAvailable(project, featureFlag)) return false
+
+        return kinds.any { kind -> kind.isAvailable(context) }
+    }
 
     override fun getActionName(directory: PsiDirectory?, newName: String, templateName: String?): String {
         val kind = kinds.first { kind -> kind.templateName == templateName }

@@ -6,7 +6,7 @@ import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiModifierListOwner
 import com.intellij.psi.util.InheritanceUtil
-import de.craftsblock.craftsnet.intellijplugin.uitls.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 private val SUPPORTED_ANNOTATIONS: Set<String> = setOf(
     "de.craftsblock.craftscore.event.EventHandler",
