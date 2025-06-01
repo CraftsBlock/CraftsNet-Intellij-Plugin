@@ -13,18 +13,18 @@ class TransformerInspectionRule(
 ) : CustomInspectionRule() {
 
     override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
-        val annotations: List<PsiAnnotation> = Utils.collectAnnotation(
-            method,
+        val rootClass: PsiClass = method.parent as PsiClass
+        val annotations: MutableList<PsiAnnotation> = Utils.collectAnnotation(
             "de.craftsblock.craftsnet.api.transformers.annotations.Transformer",
-            "de.craftsblock.craftsnet.api.transformers.annotations.TransformerCollection"
+            "de.craftsblock.craftsnet.api.transformers.annotations.TransformerCollection",
+            method, rootClass
         )
 
         if (annotations.isEmpty()) return
 
         val parent = super.parent as? CustomAnnotatedInspection ?: return
 
-        val pathAttr = method.getAnnotation(parent.annotation)?.findAttributeValue("value") as? PsiLiteralExpression ?: return
-        val pathPattern = pathAttr.value as String
+        val pathPattern = Utils.getMergedStringValueOfAnnotation(parent.annotation, "value", rootClass, method)
         val dynamicGroups: List<String> = Utils.getDynamicUrlParams(pathPattern)
         val dynamicGroupsUsed: MutableList<String> = mutableListOf()
 

@@ -1,6 +1,7 @@
 package de.craftsblock.craftsnet.intellijplugin.inspection.rules
 
 import com.intellij.codeInspection.ProblemsHolder
+import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiLiteralExpression
 import com.intellij.psi.PsiMethod
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
@@ -16,8 +17,8 @@ class DynamicUrlParamInspectionRule(
     override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
         val parent = super.parent as? CustomAnnotatedInspection ?: return
 
-        val pathAttr = method.getAnnotation(parent.annotation)?.findAttributeValue("value") as? PsiLiteralExpression ?: return
-        val pathPattern = pathAttr.value as String
+        val rootClass = method.parent as? PsiClass ?: return
+        val pathPattern = Utils.getMergedStringValueOfAnnotation(parent.annotation, "value", rootClass, method)
         val dynamicGroups: List<String> = Utils.getDynamicUrlParams(pathPattern)
 
         if (method.parameterList.parameters.size == dynamicGroups.size + argOffset) return
