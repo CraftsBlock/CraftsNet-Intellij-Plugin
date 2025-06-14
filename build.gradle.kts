@@ -12,7 +12,7 @@ val intellijVersion = "2025.1.1"
 val intellijType = IntelliJPlatformType.IntellijIdeaCommunity
 
 group = "de.craftsblock.craftsnet"
-version = "2025.1-1.0.0"
+version = "2025.1-1.0.1"
 
 repositories {
     mavenCentral()
