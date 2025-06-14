@@ -37,6 +37,13 @@ intellijPlatform {
     pluginConfiguration {
         version.set(project.version.toString())
 
+        val changelog = File(projectDir, "changelog.html")
+        val changelogText = changelog.readText().replace(Regex("<!--.*?-->", RegexOption.DOT_MATCHES_ALL), "")
+            .replace(Regex("\\s+"), " ")
+            .replace(Regex("\n+"), "")
+            .trim()
+        changeNotes.set(changelogText)
+
         ideaVersion {
             sinceBuild = "251"
             untilBuild = "251.*"

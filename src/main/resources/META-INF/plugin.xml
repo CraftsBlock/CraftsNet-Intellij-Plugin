@@ -8,6 +8,12 @@
 
     <description>The official development tool for CraftsNet.</description>
 
+    <change-notes>
+        <![CDATA[
+        Please report issues to <a href="https://github.com/CraftsBlock/CraftsNet-Intellij-Plugin/issues">here</a>!
+        ]]>
+    </change-notes>
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.java</depends>
