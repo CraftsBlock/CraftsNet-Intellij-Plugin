@@ -51,12 +51,20 @@
         "examples": []
       }
     },
+    "softDepends": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "examples": []
+      }
+    },
     "repositories": {
       "type": "array",
       "items": {
         "type": "string",
         "minLength": 1,
-        "pattern": "^https?://[A-Za-z0-9.-]+(?::\\d+)?$",
+        "pattern": "^https?://[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}(?::\\d{1,5})?(?:/[^\\s]*)?$",
         "examples": [
           "https://repo.craftsblock.de/releases",
           "https://repo.craftsblock.de/experimental"
