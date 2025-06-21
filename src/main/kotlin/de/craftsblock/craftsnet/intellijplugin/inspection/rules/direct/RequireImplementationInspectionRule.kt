@@ -1,4 +1,4 @@
-package de.craftsblock.craftsnet.intellijplugin.inspection.rules
+package de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct
 
 import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.PsiClass

@@ -1,10 +1,10 @@
 package de.craftsblock.craftsnet.intellijplugin.inspection.builtin
 
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.DynamicUrlParamInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.ParameterInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.RequireImplementationInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.TransformerInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.DynamicUrlParamInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.ParameterInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.TransformerInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct.RequireImplementationInspectionRule
 
 class SocketInspection : CustomAnnotatedInspection(
     "Socket",

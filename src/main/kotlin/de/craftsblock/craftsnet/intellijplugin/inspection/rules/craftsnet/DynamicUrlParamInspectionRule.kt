@@ -1,14 +1,13 @@
-package de.craftsblock.craftsnet.intellijplugin.inspection.rules
+package de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet
 
 import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.PsiClass
-import com.intellij.psi.PsiLiteralExpression
 import com.intellij.psi.PsiMethod
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.RemoveElementQuickFix
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.ParameterInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
-import kotlin.math.max
 
 class DynamicUrlParamInspectionRule(
     private val argOffset: Int = 1
