@@ -30,7 +30,6 @@ open class ProjectToggleableInspectionRule(
     private var cachedRule: CustomInspectionRule? = null
 
     fun updateCache(project: Project) {
-        println("Updating cache")
         if (!cacheable || project != lastProject) return
 
         lastProject = project
@@ -38,8 +37,6 @@ open class ProjectToggleableInspectionRule(
     }
 
     fun clearCache() {
-        println("Clearing cache")
-
         lastProject = null
         cachedRule = null
     }
