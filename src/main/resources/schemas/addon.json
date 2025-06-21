@@ -26,6 +26,7 @@
     },
     "website": {
       "type": "string",
+      "pattern": "^https?://[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}(?::\\d{1,5})?(?:/[^\\s]*)?$",
       "description": "Die Website des Addons"
     },
     "author": {
@@ -47,6 +48,7 @@
       "type": "array",
       "items": {
         "type": "string",
+        "pattern": "^[a-zA-Z0-9]*$",
         "minLength": 1,
         "examples": []
       }
@@ -55,6 +57,7 @@
       "type": "array",
       "items": {
         "type": "string",
+        "pattern": "^[a-zA-Z0-9]*$",
         "minLength": 1,
         "examples": []
       }
