@@ -27,7 +27,7 @@ abstract class CustomDialogTemplateAction(
 
     override fun update(e: AnActionEvent) {
         lastContext = e.dataContext
-        super.update(e)
+        super<CreateFileFromTemplateAction>.update(e)
     }
 
     override fun buildDialog(
