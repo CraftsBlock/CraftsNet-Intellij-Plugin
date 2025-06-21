@@ -3,7 +3,8 @@ package de.craftsblock.craftsnet.intellijplugin.uitls.versioning
 enum class FeatureFlag(private val major: Int, private val minor: Int, private val patch: Int) {
 
     BASE(3, 3, 5),
-    MIDDLEWARES(3, 4, 0)
+    MIDDLEWARES(3, 4, 0),
+    PRINTING_RETURN_VALUES(3, 4, 3),
     ;
 
     fun leastVersion(): Version {
