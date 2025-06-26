@@ -16,18 +16,38 @@ object Utils {
         return mutableListOf(*groupNames.toTypedArray())
     }
 
-    internal fun collectAnnotation(method: PsiMethod, single: String, repeatable: String? = null): List<PsiAnnotation> {
-        val direct = method.annotations.filter { it.qualifiedName == single }
-        if (repeatable == null) return direct
+    internal fun collectAnnotation(single: String, repeatable: String? = null, vararg elements: PsiModifierListOwner): MutableList<PsiAnnotation> {
+        val annotations: MutableList<PsiAnnotation> = mutableListOf()
 
-        val container = method.getAnnotation(repeatable)
-        val fromContainer = (container?.findDeclaredAttributeValue("value") as? PsiArrayInitializerMemberValue)
-            ?.initializers
-            ?.filterIsInstance<PsiAnnotation>()
-            ?.filter { it.qualifiedName == single }
-            ?: emptyList()
+        elements.forEach { element ->
+            annotations += element.annotations.filter { it.qualifiedName == single }
+            if (repeatable == null) return@forEach
 
-        return direct + fromContainer
+            val container = element.getAnnotation(repeatable)
+            val fromContainer = (container?.findDeclaredAttributeValue("value") as? PsiArrayInitializerMemberValue)
+                ?.initializers
+                ?.filterIsInstance<PsiAnnotation>()
+                ?.filter { it.qualifiedName == single }
+                ?: emptyList()
+
+            annotations += fromContainer
+        }
+
+        return annotations
+    }
+
+    internal fun getMergedStringValueOfAnnotation(
+        annotation: String, attribute: String,
+        vararg elements: PsiModifierListOwner, delimiter: String = "/"
+    ): String {
+        return elements.mapNotNull { element ->
+            (element.getAnnotation(annotation)
+                ?.findAttributeValue(attribute) as? PsiLiteralExpression)
+                ?.value as? String
+        }.filter { it.isNotBlank() }
+            .joinToString(separator = delimiter) {
+                it.trimStart(*delimiter.toCharArray())
+            }
     }
 
     internal fun typeToQualifiedName(type: PsiType): String? {

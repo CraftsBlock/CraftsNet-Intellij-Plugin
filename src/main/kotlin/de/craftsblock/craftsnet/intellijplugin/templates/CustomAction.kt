@@ -9,8 +9,9 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import com.intellij.psi.codeStyle.CodeStyleManager
+import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
 
-interface CustomAction {
+interface CustomAction : Updatable {
 
     fun checkAvailability(dataContext: DataContext): Boolean
 

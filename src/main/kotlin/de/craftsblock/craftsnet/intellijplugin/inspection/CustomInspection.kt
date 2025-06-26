@@ -6,16 +6,22 @@ import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.JavaElementVisitor
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiMethod
-import de.craftsblock.craftsnet.intellijplugin.uitls.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 abstract class CustomInspection(
     private val name: String,
     vararg val rules: CustomInspectionRule,
     skipAdopt: Boolean = false
-) : AbstractBaseJavaLocalInspectionTool() {
+) : AbstractBaseJavaLocalInspectionTool(), Updatable {
 
     init {
         if (!skipAdopt) rules.forEach { it.adopt(this) }
+    }
+
+    override fun update() {
+        rules.forEach { it.update() }
+        super.update()
     }
 
     override fun getDisplayName(): String = "$name inspection"

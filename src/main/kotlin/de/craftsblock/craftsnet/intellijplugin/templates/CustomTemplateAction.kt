@@ -24,7 +24,7 @@ abstract class CustomTemplateAction(
     override fun update(e: AnActionEvent) {
         lastContext = e.dataContext
 
-        super.update(e)
+        super<AnAction>.update(e)
     }
 
     override fun actionPerformed(@NotNull e: AnActionEvent) {

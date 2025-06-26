@@ -12,7 +12,7 @@ val intellijVersion = "2025.1.1"
 val intellijType = IntelliJPlatformType.IntellijIdeaCommunity
 
 group = "de.craftsblock.craftsnet"
-version = "2025.1-1.0.0"
+version = "2025.1-1.0.2"
 
 repositories {
     mavenCentral()
@@ -36,6 +36,13 @@ intellijPlatform {
 
     pluginConfiguration {
         version.set(project.version.toString())
+
+        val changelog = File(projectDir, "changelog.html")
+        val changelogText = changelog.readText().replace(Regex("<!--.*?-->", RegexOption.DOT_MATCHES_ALL), "")
+            .replace(Regex("\\s+"), " ")
+            .replace(Regex("\n+"), "")
+            .trim()
+        changeNotes.set(changelogText)
 
         ideaVersion {
             sinceBuild = "251"

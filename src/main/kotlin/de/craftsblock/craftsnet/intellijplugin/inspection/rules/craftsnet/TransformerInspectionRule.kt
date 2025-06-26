@@ -1,11 +1,18 @@
-package de.craftsblock.craftsnet.intellijplugin.inspection.rules
+package de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet
 
 import com.intellij.codeInspection.ProblemHighlightType
 import com.intellij.codeInspection.ProblemsHolder
-import com.intellij.psi.*
+import com.intellij.psi.PsiAnnotation
+import com.intellij.psi.PsiClass
+import com.intellij.psi.PsiClassObjectAccessExpression
+import com.intellij.psi.PsiClassType
+import com.intellij.psi.PsiLiteralExpression
+import com.intellij.psi.PsiMethod
+import com.intellij.psi.PsiType
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.RemoveElementQuickFix
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.ParameterInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
 
 class TransformerInspectionRule(
@@ -13,18 +20,18 @@ class TransformerInspectionRule(
 ) : CustomInspectionRule() {
 
     override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
-        val annotations: List<PsiAnnotation> = Utils.collectAnnotation(
-            method,
+        val rootClass: PsiClass = method.parent as PsiClass
+        val annotations: MutableList<PsiAnnotation> = Utils.collectAnnotation(
             "de.craftsblock.craftsnet.api.transformers.annotations.Transformer",
-            "de.craftsblock.craftsnet.api.transformers.annotations.TransformerCollection"
+            "de.craftsblock.craftsnet.api.transformers.annotations.TransformerCollection",
+            method, rootClass
         )
 
         if (annotations.isEmpty()) return
 
         val parent = super.parent as? CustomAnnotatedInspection ?: return
 
-        val pathAttr = method.getAnnotation(parent.annotation)?.findAttributeValue("value") as? PsiLiteralExpression ?: return
-        val pathPattern = pathAttr.value as String
+        val pathPattern = Utils.getMergedStringValueOfAnnotation(parent.annotation, "value", rootClass, method)
         val dynamicGroups: List<String> = Utils.getDynamicUrlParams(pathPattern)
         val dynamicGroupsUsed: MutableList<String> = mutableListOf()
 

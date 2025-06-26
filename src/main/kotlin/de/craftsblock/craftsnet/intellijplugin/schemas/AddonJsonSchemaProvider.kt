@@ -5,7 +5,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.jetbrains.jsonSchema.extension.JsonSchemaFileProvider
 import com.jetbrains.jsonSchema.extension.JsonSchemaProviderFactory
 import com.jetbrains.jsonSchema.extension.SchemaType
-import de.craftsblock.craftsnet.intellijplugin.uitls.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 class AddonJsonSchemaProvider : JsonSchemaProviderFactory {
 

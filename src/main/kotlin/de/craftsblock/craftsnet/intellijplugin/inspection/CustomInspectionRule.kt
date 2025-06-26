@@ -5,9 +5,10 @@ import com.intellij.codeInspection.ProblemHighlightType
 import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
+import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
 import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
 
-abstract class CustomInspectionRule {
+abstract class CustomInspectionRule : Updatable {
 
     var parent: CustomInspection? = null
 
@@ -31,5 +32,7 @@ abstract class CustomInspectionRule {
         val annotatedInspection = parent as? CustomAnnotatedInspection ?: return "null"
         return annotatedInspection.annotation.let(Utils::stripClass)
     }
+
+    fun isAdopted(): Boolean = this.parent != null
 
 }

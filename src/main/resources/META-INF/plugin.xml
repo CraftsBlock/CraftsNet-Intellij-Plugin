@@ -1,12 +1,18 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>de.craftsblock.craftsnet.IntellijPlugin</id>
+    <id>de.craftsblock.craftsnet-dev</id>
 
     <name>CraftsNet Development</name>
     <vendor email="admin@craftsblock.de" url="https://craftsblock.de">CraftsBlock</vendor>
 
     <description>The official development tool for CraftsNet.</description>
+
+    <change-notes>
+        <![CDATA[
+        Please report issues to <a href="https://github.com/CraftsBlock/CraftsNet-Intellij-Plugin/issues">here</a>!
+        ]]>
+    </change-notes>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->

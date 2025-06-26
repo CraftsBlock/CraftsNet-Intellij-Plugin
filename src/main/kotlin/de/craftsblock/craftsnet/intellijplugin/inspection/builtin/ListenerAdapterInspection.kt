@@ -1,8 +1,8 @@
 package de.craftsblock.craftsnet.intellijplugin.inspection.builtin
 
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.ParameterInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.RequireImplementationInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.ParameterInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct.RequireImplementationInspectionRule
 
 class ListenerAdapterInspection : CustomAnnotatedInspection(
     "Listener",
