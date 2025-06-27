@@ -3,16 +3,15 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "2.1.10"
-    id("org.jetbrains.intellij.platform") version "2.6.0"
-//    id("org.jetbrains.intellij.platform.migration") version "2.6.0"
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.intellij.platform)
 }
 
-val intellijVersion = "2025.1.1"
-val intellijType = IntelliJPlatformType.IntellijIdeaCommunity
+val pluginVersion: String by project
+val ideaVersionName: String by project
 
 group = "de.craftsblock.craftsnet"
-version = "2025.1-1.0.2"
+version = "$ideaVersionName-$pluginVersion"
 
 repositories {
     mavenCentral()
@@ -23,7 +22,11 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        create(intellijType, intellijVersion)
+        create(
+            IntelliJPlatformType.IntellijIdeaCommunity,
+            libs.versions.intellij.ide,
+            useInstaller = false
+        )
 
         bundledPlugin("com.intellij.java")
         bundledPlugin("com.intellij.modules.json")
@@ -45,8 +48,8 @@ intellijPlatform {
         changeNotes.set(changelogText)
 
         ideaVersion {
-            sinceBuild = "251"
-            untilBuild = "251.*"
+            sinceBuild = libs.versions.intellij.since
+            untilBuild = libs.versions.intellij.until
         }
     }
 

@@ -1,0 +1,11 @@
+[versions]
+kotlin = "2.1.10"
+
+intellij-platform = "2.6.0"
+intellij-ide = "2025.1.1"
+intellij-since = "251"
+intellij-until = "251.*"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+intellij-platform = { id = "org.jetbrains.intellij.platform", version.ref = "intellij-platform" }
