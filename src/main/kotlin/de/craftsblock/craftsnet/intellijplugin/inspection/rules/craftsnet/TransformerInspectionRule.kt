@@ -12,7 +12,7 @@ import com.intellij.psi.PsiType
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.RemoveElementQuickFix
-import de.craftsblock.craftsnet.intellijplugin.inspection.rules.craftsnet.ParameterInspectionRule
+import de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct.ParameterInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
 
 class TransformerInspectionRule(
