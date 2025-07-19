@@ -12,6 +12,7 @@ private val DIALOG_TEMPLATES: Set<CustomAction> = setOf(
     AddonTemplates(),
     AutoRegisterTemplates(),
     CliTemplates(),
+    CodecTemplates(),
     EndpointTemplates(),
     EventTemplates(),
     HttpTemplates(),
