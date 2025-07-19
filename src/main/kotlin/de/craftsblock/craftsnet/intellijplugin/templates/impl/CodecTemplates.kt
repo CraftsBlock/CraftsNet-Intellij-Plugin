@@ -40,5 +40,5 @@ class CodecTemplates : CustomDialogTemplateAction(
             Pair("ENCODER_IMPORT", "de.craftsblock.craftscore.json.Json"),
         )
     ),
-    featureFlag = FeatureFlag.BASE_350
+    featureFlag = FeatureFlag.ADVANCED_CODEC_SYSTEM
 )

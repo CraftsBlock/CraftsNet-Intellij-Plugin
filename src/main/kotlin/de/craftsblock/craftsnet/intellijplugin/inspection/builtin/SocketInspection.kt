@@ -22,7 +22,7 @@ class SocketInspection : CustomAnnotatedInspection(
             fallbackRuleIfAbsent = secondParameterFallbackRule
         ),
         secondParameterFallbackRule,
-        FeatureFlag.BASE_350
+        FeatureFlag.ADVANCED_CODEC_SYSTEM
     ),
     RequireImplementationInspectionRule("de.craftsblock.craftsnet.api.websocket.SocketHandler"),
     TransformerInspectionRule(2),

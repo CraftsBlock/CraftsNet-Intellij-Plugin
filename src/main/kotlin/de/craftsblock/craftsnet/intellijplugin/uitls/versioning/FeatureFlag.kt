@@ -5,7 +5,7 @@ enum class FeatureFlag(private val major: Int, private val minor: Int, private v
     BASE(3, 3, 5),
     MIDDLEWARES(3, 4, 0),
     PRINTING_RETURN_VALUES(3, 4, 3),
-    BASE_350(3, 5, 0),
+    ADVANCED_CODEC_SYSTEM(3, 5, 0),
     ;
 
     fun leastVersion(): Version {
