@@ -9,11 +9,16 @@ class SingletonTemplateAction(templateKind: TemplateKind) : CustomTemplateAction
     constructor(
         templateName: String,
         icon: Icon,
-        @NotNull extension: String = templateName.split(".").last(),
-        @NotNull visibility: TemplateVisibility = TemplateVisibility.JAVA_SOURCES,
-        @NotNull liveTemplate: Boolean = true,
-        @NotNull dynamicName: Boolean = (visibility == TemplateVisibility.JAVA_SOURCES),
-        @NotNull featureFlag: FeatureFlag = FeatureFlag.BASE
-    ) : this(TemplateKind(templateName, icon, templateName, extension, visibility, liveTemplate, dynamicName, featureFlag))
+        extension: String = templateName.split(".").last(),
+        visibility: TemplateVisibility = TemplateVisibility.JAVA_SOURCES,
+        liveTemplate: Boolean = true,
+        dynamicName: Boolean = (visibility == TemplateVisibility.JAVA_SOURCES),
+        featureFlag: FeatureFlag = FeatureFlag.BASE,
+        args: Map<String, String> = mapOf(),
+    ) : this(
+        TemplateKind(
+            templateName, icon, templateName, extension, visibility, liveTemplate, dynamicName, featureFlag, args
+        )
+    )
 
 }
