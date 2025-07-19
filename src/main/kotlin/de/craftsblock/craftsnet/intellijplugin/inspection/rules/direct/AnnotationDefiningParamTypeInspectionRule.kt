@@ -41,7 +41,6 @@ class AnnotationDefiningParamTypeInspectionRule(
         if (Utils.isPrimitive(returnType))
             expectedTypes.add(Utils.typeToQualifiedName(Utils.getPrimitive(returnType)!!)!!)
 
-
         val rule = ParameterInspectionRule(
             index, returnType.presentableText.replaceFirstChar { it.lowercase() },
             *expectedTypes.reversed().toTypedArray(),
