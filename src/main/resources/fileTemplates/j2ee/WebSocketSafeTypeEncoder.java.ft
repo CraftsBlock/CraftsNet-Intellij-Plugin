@@ -1,0 +1,24 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($SIMPLE_NAME = "TypeTo" + $ENCODER_NAME + "Encoder")
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.websocket.codec.WebSocketSafeTypeEncoder." + $SIMPLE_NAME)
+
+#if ($ENCODER_TYPE)
+  #set($REAL_TYPE = $ENCODER_TYPE)
+#else
+  #set($REAL_TYPE = $ENCODER_NAME)
+#end
+
+#if ($ENCODER_IMPORT) import ${ENCODER_IMPORT}; #end
+
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end<#[[$INPUT$]]#> {
+
+    @Override
+    public ${REAL_TYPE} encode(#[[$INPUT$]]# input) {
+        #[[$END$]]#
+    }
+
+}
