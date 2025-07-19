@@ -13,7 +13,7 @@ import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiFile
 import com.intellij.psi.PsiManager
 import org.jetbrains.annotations.NotNull
-
+import java.util.Properties
 
 abstract class CustomTemplateAction(
     private val kind: TemplateKind
@@ -33,7 +33,8 @@ abstract class CustomTemplateAction(
         val template = FileTemplateManager.getInstance(project).getInternalTemplate(kind.templateName)
 
         val psiFile: PsiFile = createFileFromTemplate(project, template, dir) ?: return
-        startTemplate(project, psiFile, kind, true)
+
+        startTemplate(project, psiFile, kind, true, kind.args)
     }
 
     override fun checkAvailability(dataContext: DataContext): Boolean = kind.isAvailable(dataContext)
@@ -42,7 +43,10 @@ abstract class CustomTemplateAction(
         project: Project, template: FileTemplate, dir: PsiDirectory
     ): PsiFile? {
         try {
-            return FileTemplateUtil.createFromTemplate(template, kind.kind, null, dir).containingFile
+            val props = Properties()
+            kind.args.forEach { props.setProperty(it.key, it.value) }
+
+            return FileTemplateUtil.createFromTemplate(template, kind.kind, props, dir).containingFile
         } catch (ex: Exception) {
             ex.printStackTrace()
             Messages.showErrorDialog(project, "Error creating file: " + ex.message, "Error")

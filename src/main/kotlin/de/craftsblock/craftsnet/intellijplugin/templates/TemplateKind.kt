@@ -12,14 +12,15 @@ import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
 
 data class TemplateKind(
-    @NlsContexts.ListItem @NotNull val kind: String,
-    @Nullable val icon: Icon,
-    @NonNls @NotNull val templateName: String,
-    @NotNull val extension: String = templateName.split(".").last(),
-    @NotNull val visibility: TemplateVisibility = TemplateVisibility.JAVA_SOURCES,
-    @NotNull val liveTemplate: Boolean = true,
-    @NotNull val dynamicName: Boolean = (visibility == TemplateVisibility.JAVA_SOURCES),
-    @NotNull val featureFlag: FeatureFlag = FeatureFlag.BASE
+    @NlsContexts.ListItem val kind: String,
+    val icon: Icon?,
+    @param:NonNls val templateName: String,
+    val extension: String = templateName.split(".").last(),
+    val visibility: TemplateVisibility = TemplateVisibility.JAVA_SOURCES,
+    val liveTemplate: Boolean = true,
+    val dynamicName: Boolean = (visibility == TemplateVisibility.JAVA_SOURCES),
+    val featureFlag: FeatureFlag = FeatureFlag.BASE,
+    val args: Map<String, String> = mapOf(),
 ) {
 
     internal fun isAvailable(context: DataContext): Boolean {

@@ -31,6 +31,16 @@ class CraftsNetTemplates : FileTemplateGroupDescriptorFactory {
             autoRegisterGroup.addTemplate(FileTemplateDescriptor(AUTO_REGISTER_HANDLER))
         }
 
+        FileTemplateGroupDescriptor("Codec", AllIcons.FileTypes.Java).let { codecGroup ->
+            group.addTemplate(codecGroup)
+
+            codecGroup.addTemplate(FileTemplateDescriptor(DECODER))
+            codecGroup.addTemplate(FileTemplateDescriptor(ENCODER))
+
+            codecGroup.addTemplate(FileTemplateDescriptor(WEB_SOCKET_SAFE_TYPE_DECODER))
+            codecGroup.addTemplate(FileTemplateDescriptor(WEB_SOCKET_SAFE_TYPE_ENCODER))
+        }
+
         FileTemplateGroupDescriptor("HTTP", AllIcons.FileTypes.Java).let { httpGroup ->
             group.addTemplate(httpGroup)
 
@@ -94,6 +104,13 @@ class CraftsNetTemplates : FileTemplateGroupDescriptorFactory {
 
         // Auto register
         const val AUTO_REGISTER_HANDLER = "AutoRegisterHandler.java"
+
+        // Codec
+        const val ENCODER = "Encoder.java"
+        const val DECODER = "Decoder.java"
+
+        const val WEB_SOCKET_SAFE_TYPE_DECODER = "WebSocketSafeTypeDecoder.java"
+        const val WEB_SOCKET_SAFE_TYPE_ENCODER = "WebSocketSafeTypeEncoder.java"
 
         // HTTP
         const val BODY = "Body.java"

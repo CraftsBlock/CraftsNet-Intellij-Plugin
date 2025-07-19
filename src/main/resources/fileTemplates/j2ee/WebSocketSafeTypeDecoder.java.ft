@@ -1,0 +1,17 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+
+#set($SIMPLE_NAME = "WebSocketSafeTypeDecoder")
+#set($QUALIFIED_IMPORT = "de.craftsblock.craftsnet.api.websocket.codec." + $SIMPLE_NAME)
+
+import de.craftsblock.craftsnet.api.websocket.Frame;
+#if (${NAME} != ${SIMPLE_NAME})import ${QUALIFIED_IMPORT};#end
+
+public class ${NAME} implements #if (${NAME} == ${SIMPLE_NAME})${QUALIFIED_IMPORT}#else ${SIMPLE_NAME}#end<#[[$OUTPUT$]]#> {
+
+    @Override
+    public #[[$OUTPUT$]]# decode(Frame frame) {
+        #[[$END$]]#
+    }
+
+}
