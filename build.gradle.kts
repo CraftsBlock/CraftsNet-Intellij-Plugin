@@ -22,11 +22,9 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        create(
-            IntelliJPlatformType.IntellijIdeaCommunity,
-            libs.versions.intellij.ide,
+        intellijIdeaCommunity(libs.versions.intellij.ide) {
             useInstaller = false
-        )
+        }
 
         bundledPlugin("com.intellij.java")
         bundledPlugin("com.intellij.modules.json")
