@@ -1,11 +1,11 @@
 package de.craftsblock.craftsnet.intellijplugin.templates
 
-import ai.grazie.utils.toDistinctTypedArray
 import com.intellij.icons.AllIcons
 import com.intellij.openapi.actionSystem.*
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 import de.craftsblock.craftsnet.intellijplugin.templates.impl.*
+import de.craftsblock.craftsnet.intellijplugin.uitls.toDistinctTypedArray
 import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
 
 private val DIALOG_TEMPLATES: Set<CustomAction> = setOf(
