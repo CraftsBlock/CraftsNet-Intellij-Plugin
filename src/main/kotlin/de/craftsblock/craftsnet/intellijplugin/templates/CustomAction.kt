@@ -1,6 +1,5 @@
 package de.craftsblock.craftsnet.intellijplugin.templates
 
-import com.intellij.ide.fileTemplates.actions.CreateFromTemplateActionBase
 import com.intellij.ide.fileTemplates.actions.CreateFromTemplateManager
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.command.WriteCommandAction

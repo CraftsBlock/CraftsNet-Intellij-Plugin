@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "IntellijPlugin"
+rootProject.name = "CraftsNet-Intellij-Plugin"

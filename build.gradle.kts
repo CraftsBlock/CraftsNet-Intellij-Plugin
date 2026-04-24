@@ -1,4 +1,3 @@
-import org.jetbrains.intellij.platform.gradle.IntelliJPlatformType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -22,11 +21,9 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        create(
-            IntelliJPlatformType.IntellijIdeaCommunity,
-            libs.versions.intellij.ide,
+        intellijIdeaCommunity(libs.versions.intellij.ide) {
             useInstaller = false
-        )
+        }
 
         bundledPlugin("com.intellij.java")
         bundledPlugin("com.intellij.modules.json")
