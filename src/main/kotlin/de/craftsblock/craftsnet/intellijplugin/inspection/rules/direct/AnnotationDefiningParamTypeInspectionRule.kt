@@ -1,16 +1,11 @@
 package de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct
 
 import com.intellij.codeInspection.ProblemsHolder
-import com.intellij.psi.PsiAnnotation
-import com.intellij.psi.PsiClass
-import com.intellij.psi.PsiClassObjectAccessExpression
-import com.intellij.psi.PsiClassType
-import com.intellij.psi.PsiMethod
-import com.intellij.psi.PsiType
+import com.intellij.psi.*
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 class AnnotationDefiningParamTypeInspectionRule(
     private val index: Int,

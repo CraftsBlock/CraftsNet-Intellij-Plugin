@@ -1,4 +1,4 @@
-package de.craftsblock.craftsnet.intellijplugin.uitls.versioning
+package de.craftsblock.craftsnet.intellijplugin.utils.versioning
 
 data class Version(
     var major: Int,

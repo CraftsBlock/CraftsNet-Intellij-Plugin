@@ -1,8 +1,8 @@
 package de.craftsblock.craftsnet.intellijplugin.inspection.rules
 
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.FeatureFlag
 
 class FeatureFlagSpecificInspectionRule(
     ruleIfPresent: CustomInspectionRule,

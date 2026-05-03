@@ -5,7 +5,7 @@ import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.JavaElementVisitor
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiMethod
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
 
 abstract class CustomAnnotatedInspection(
     name: String,

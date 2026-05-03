@@ -5,9 +5,9 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiMethod
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.State
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.StateListener
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.State
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.StateListener
 import java.util.function.BiFunction
 
 open class ProjectToggleableInspectionRule(

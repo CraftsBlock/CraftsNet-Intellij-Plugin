@@ -6,8 +6,8 @@ import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.JavaElementVisitor
 import com.intellij.psi.PsiElementVisitor
 import com.intellij.psi.PsiMethod
-import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.Updatable
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
 
 abstract class CustomInspection(
     private val name: String,
