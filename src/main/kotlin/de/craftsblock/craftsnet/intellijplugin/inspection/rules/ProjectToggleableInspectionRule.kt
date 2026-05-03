@@ -68,8 +68,9 @@ open class ProjectToggleableInspectionRule<T : CustomInspectionRule>(
     private fun handleUncachedCheckMethod(project: Project, holder: ProblemsHolder, method: PsiMethod) {
         val rule: T = function.apply(project, this) ?: return
 
-        if (!rule.isAdopted())
+        if (!rule.isAdopted()) {
             rule.adopt(this.parent!!)
+        }
 
         rule.checkMethod(holder, method)
 
