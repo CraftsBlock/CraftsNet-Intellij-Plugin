@@ -11,7 +11,7 @@ class AnnotationDefiningParamTypeInspectionRule(
     private val index: Int,
     private val annotation: String,
     private val annotationRepeatable: String? = null,
-    private val fallbackRuleIfAbsent: ParameterInspectionRule? = null
+    private val fallbackRuleIfAbsent: CustomInspectionRule? = null
 ) : CustomInspectionRule() {
 
     override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
@@ -19,7 +19,7 @@ class AnnotationDefiningParamTypeInspectionRule(
         defineUnderlying(parent, method)?.checkMethod(holder, method)
     }
 
-    private fun defineUnderlying(parent: CustomInspection, method: PsiMethod): ParameterInspectionRule? {
+    private fun defineUnderlying(parent: CustomInspection, method: PsiMethod): CustomInspectionRule? {
         val rootClass: PsiClass = method.parent as PsiClass
         val annotations: MutableList<PsiAnnotation> = Utils.collectAnnotation(annotation, annotationRepeatable, method, rootClass)
         if (annotations.isEmpty()) return fallbackRuleIfAbsent

@@ -19,9 +19,13 @@ class SocketInspection : CustomAnnotatedInspection(
         AnnotationDefiningParamTypeInspectionRule(
             1,
             "de.craftsblock.craftsnet.api.websocket.annotations.ApplyDecoder",
-            fallbackRuleIfAbsent = secondParameterFallbackRule
+            fallbackRuleIfAbsent = FeatureFlagSpecificInspectionRule(
+                allowedMessageTypesSinceBufferUtil,
+                allowedMessageTypesBeforeCodec,
+                FeatureFlag.BUFFER_UTIL
+            )
         ),
-        secondParameterFallbackRule,
+        allowedMessageTypesBeforeCodec,
         FeatureFlag.ADVANCED_CODEC_SYSTEM
     ),
     RequireImplementationInspectionRule("de.craftsblock.craftsnet.api.websocket.SocketHandler"),
@@ -33,7 +37,18 @@ class SocketInspection : CustomAnnotatedInspection(
     ),
 )
 
-private val secondParameterFallbackRule: ParameterInspectionRule = ParameterInspectionRule(
+private val allowedMessageTypesSinceBufferUtil: ParameterInspectionRule = ParameterInspectionRule(
+    1,
+    "message",
+    "java.lang.String",
+    "java.nio.ByteBuffer",
+    "de.craftsblock.craftscore.buffer.BufferUtil",
+    "de.craftsblock.craftsnet.api.websocket.Frame",
+    "de.craftsblock.craftsnet.utils.ByteBuffer",
+    "byte[]", "java.lang.Byte[]"
+)
+
+private val allowedMessageTypesBeforeCodec: ParameterInspectionRule = ParameterInspectionRule(
     1,
     "message",
     "java.lang.String",

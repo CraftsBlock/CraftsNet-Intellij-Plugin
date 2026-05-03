@@ -10,11 +10,11 @@ import de.craftsblock.craftsnet.intellijplugin.utils.versioning.State
 import de.craftsblock.craftsnet.intellijplugin.utils.versioning.StateListener
 import java.util.function.BiFunction
 
-open class ProjectToggleableInspectionRule(
-    open val rule1: CustomInspectionRule,
-    open val rule2: CustomInspectionRule,
+open class ProjectToggleableInspectionRule<T : CustomInspectionRule>(
+    open val rule1: T,
+    open val rule2: T,
     val cacheable: Boolean = true,
-    val function: BiFunction<Project, ProjectToggleableInspectionRule, CustomInspectionRule?>,
+    val function: BiFunction<Project, ProjectToggleableInspectionRule<T>, T?>,
 ) : CustomInspectionRule() {
 
     private val clearCacheListener: StateListener = object : StateListener {
@@ -27,7 +27,7 @@ open class ProjectToggleableInspectionRule(
     }
 
     private var lastProject: Project? = null
-    private var cachedRule: CustomInspectionRule? = null
+    private var cachedRule: T? = null
 
     fun updateCache(project: Project) {
         if (!cacheable || project != lastProject) return
@@ -66,7 +66,7 @@ open class ProjectToggleableInspectionRule(
     }
 
     private fun handleUncachedCheckMethod(project: Project, holder: ProblemsHolder, method: PsiMethod) {
-        val rule: CustomInspectionRule = function.apply(project, this) ?: return
+        val rule: T = function.apply(project, this) ?: return
 
         if (!rule.isAdopted())
             rule.adopt(this.parent!!)
