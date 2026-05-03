@@ -10,8 +10,8 @@ import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiFile
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.FeatureFlag
 import javax.swing.Icon
 
 

@@ -1,4 +1,4 @@
-package de.craftsblock.craftsnet.intellijplugin.uitls
+package de.craftsblock.craftsnet.intellijplugin.utils
 
 import com.intellij.psi.*
 
@@ -63,4 +63,8 @@ object Utils {
 
     internal fun stripClass(type: String): String = type.split(".").last()
 
+}
+
+inline fun <reified T> Collection<T>.toDistinctTypedArray(): Array<T> {
+    return this.distinct().toTypedArray()
 }

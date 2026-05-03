@@ -12,7 +12,7 @@ import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.param.AddParamet
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.param.AddParameterQuickFix
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.param.ChangeParameterAtIndexQuickFix
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.param.ChangeParameterQuickFix
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 class ParameterInspectionRule(
     private val index: Int,

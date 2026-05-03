@@ -4,7 +4,7 @@ import com.intellij.icons.AllIcons
 import de.craftsblock.craftsnet.intellijplugin.templates.CraftsNetTemplates
 import de.craftsblock.craftsnet.intellijplugin.templates.CustomDialogTemplateAction
 import de.craftsblock.craftsnet.intellijplugin.templates.TemplateKind
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.FeatureFlag
 
 class CodecTemplates : CustomDialogTemplateAction(
     "Codec",

@@ -1,4 +1,4 @@
-package de.craftsblock.craftsnet.intellijplugin.uitls
+package de.craftsblock.craftsnet.intellijplugin.utils
 
 import com.intellij.openapi.module.ModuleManager
 import com.intellij.openapi.project.Project

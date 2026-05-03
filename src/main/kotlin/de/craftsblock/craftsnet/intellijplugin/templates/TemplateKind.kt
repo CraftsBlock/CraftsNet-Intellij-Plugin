@@ -4,11 +4,9 @@ import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.NlsContexts
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.FeatureFlag
 import org.jetbrains.annotations.NonNls
-import org.jetbrains.annotations.NotNull
-import org.jetbrains.annotations.Nullable
 import javax.swing.Icon
 
 data class TemplateKind(

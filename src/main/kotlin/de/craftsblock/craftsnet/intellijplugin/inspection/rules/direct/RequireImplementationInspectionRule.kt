@@ -7,7 +7,7 @@ import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.CustomQuickFix
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.`object`.AddImplementationQuickFix
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 class RequireImplementationInspectionRule(
     private vararg val requiredInterfaces: String
