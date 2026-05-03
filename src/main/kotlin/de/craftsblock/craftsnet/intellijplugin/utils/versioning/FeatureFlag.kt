@@ -1,4 +1,4 @@
-package de.craftsblock.craftsnet.intellijplugin.uitls.versioning
+package de.craftsblock.craftsnet.intellijplugin.utils.versioning
 
 enum class FeatureFlag(private val major: Int, private val minor: Int, private val patch: Int) {
 
@@ -6,6 +6,8 @@ enum class FeatureFlag(private val major: Int, private val minor: Int, private v
     MIDDLEWARES(3, 4, 0),
     PRINTING_RETURN_VALUES(3, 4, 3),
     ADVANCED_CODEC_SYSTEM(3, 5, 0),
+    BUFFER_UTIL(3, 7, 0),
+    AUTO_REGISTER_V2(3, 7, 3),
     ;
 
     fun leastVersion(): Version {

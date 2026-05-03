@@ -9,7 +9,7 @@ import com.intellij.psi.PsiType
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspection
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.method.MethodReturnTypeQuickFix
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 class MethodReturnTypeInspectionRule(
     private vararg val expectedTypes: String?,

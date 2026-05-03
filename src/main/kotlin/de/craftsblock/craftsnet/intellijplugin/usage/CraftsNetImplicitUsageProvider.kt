@@ -4,20 +4,24 @@ import com.intellij.codeInsight.AnnotationUtil
 import com.intellij.codeInsight.daemon.ImplicitUsageProvider
 import com.intellij.psi.PsiClass
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiMethod
 import com.intellij.psi.PsiModifierListOwner
 import com.intellij.psi.util.InheritanceUtil
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.CraftsNetVersionUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.CraftsNetVersionUtils
+import java.util.Collections
 
-private val SUPPORTED_ANNOTATIONS: Set<String> = setOf(
+private val SUPPORTED_METHOD_ANNOTATIONS: Set<String> = setOf(
     "de.craftsblock.craftscore.event.EventHandler",
     "de.craftsblock.craftsnet.api.http.annotations.Route",
     "de.craftsblock.craftsnet.api.websocket.annotations.Socket",
-    "de.craftsblock.craftsnet.autoregister.meta.AutoRegister"
+)
+
+private val SUPPORTED_TYPE_ANNOTATIONS: Set<String> = setOf(
+    "de.craftsblock.craftsnet.autoregister.meta.AutoRegister",
 )
 
 private val SUPPORTED_SUPER_CLASSES: Set<String> = setOf(
     "de.craftsblock.craftsnet.addon.Addon",
-    "de.craftsblock.craftscore.event.ListenerAdapter"
 )
 
 class CraftsNetImplicitUsageProvider : ImplicitUsageProvider {
@@ -31,7 +35,14 @@ class CraftsNetImplicitUsageProvider : ImplicitUsageProvider {
     private fun isAnnotated(element: PsiElement): Boolean {
         if (element !is PsiModifierListOwner) return false
         val owner: PsiModifierListOwner = element
-        for (annotation in SUPPORTED_ANNOTATIONS)
+
+        val annotations = when(element) {
+            is PsiMethod -> SUPPORTED_METHOD_ANNOTATIONS
+            is PsiClass -> SUPPORTED_TYPE_ANNOTATIONS
+            else -> Collections.emptySet()
+        }
+
+        for (annotation in annotations)
             if (AnnotationUtil.isAnnotated(owner, annotation, 0))
                 return true
         return false
