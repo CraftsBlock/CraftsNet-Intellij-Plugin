@@ -21,7 +21,7 @@ repositories {
 
 dependencies {
     intellijPlatform {
-        intellijIdeaCommunity(libs.versions.intellij.ide) {
+        intellijIdea(libs.versions.intellij.ide) {
             useInstaller = false
         }
 
