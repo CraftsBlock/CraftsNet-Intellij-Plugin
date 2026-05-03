@@ -14,6 +14,11 @@ class AnnotationDefiningParamTypeInspectionRule(
     private val fallbackRuleIfAbsent: CustomInspectionRule? = null
 ) : CustomInspectionRule() {
 
+    override fun adopt(parent: CustomInspection) {
+        super.adopt(parent)
+        fallbackRuleIfAbsent?.adopt(parent)
+    }
+
     override fun checkMethod(holder: ProblemsHolder, method: PsiMethod) {
         val parent = super.parent as? CustomAnnotatedInspection ?: return
         defineUnderlying(parent, method)?.checkMethod(holder, method)
