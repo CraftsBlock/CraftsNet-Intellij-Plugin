@@ -2,9 +2,9 @@
 kotlin = "2.2.0-RC2"
 
 intellij-platform = "2.13.1"
-intellij-ide = "2025.2"
-intellij-since = "252"
-intellij-until = "252.*"
+intellij-ide = "2025.3.1"
+intellij-since = "253"
+intellij-until = "253.*"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
