@@ -64,3 +64,7 @@ object Utils {
     internal fun stripClass(type: String): String = type.split(".").last()
 
 }
+
+inline fun <reified T> Collection<T>.toDistinctTypedArray(): Array<T> {
+    return this.distinct().toTypedArray()
+}
