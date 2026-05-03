@@ -7,7 +7,7 @@ import de.craftsblock.craftsnet.intellijplugin.inspection.CustomAnnotatedInspect
 import de.craftsblock.craftsnet.intellijplugin.inspection.CustomInspectionRule
 import de.craftsblock.craftsnet.intellijplugin.inspection.fixes.RemoveElementQuickFix
 import de.craftsblock.craftsnet.intellijplugin.inspection.rules.direct.ParameterInspectionRule
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 class DynamicUrlParamInspectionRule(
     private val argOffset: Int = 1

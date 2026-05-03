@@ -9,7 +9,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDocumentManager
 import com.intellij.psi.PsiFile
 import com.intellij.psi.codeStyle.CodeStyleManager
-import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
+import de.craftsblock.craftsnet.intellijplugin.utils.Updatable
 
 interface CustomAction : Updatable {
 

@@ -1,7 +1,6 @@
 package de.craftsblock.craftsnet.intellijplugin.templates
 
-import de.craftsblock.craftsnet.intellijplugin.uitls.versioning.FeatureFlag
-import org.jetbrains.annotations.NotNull
+import de.craftsblock.craftsnet.intellijplugin.utils.versioning.FeatureFlag
 import javax.swing.Icon
 
 class SingletonTemplateAction(templateKind: TemplateKind) : CustomTemplateAction(templateKind) {

@@ -5,8 +5,8 @@ import com.intellij.codeInspection.ProblemHighlightType
 import com.intellij.codeInspection.ProblemsHolder
 import com.intellij.psi.PsiElement
 import com.intellij.psi.PsiMethod
-import de.craftsblock.craftsnet.intellijplugin.uitls.Updatable
-import de.craftsblock.craftsnet.intellijplugin.uitls.Utils
+import de.craftsblock.craftsnet.intellijplugin.utils.Updatable
+import de.craftsblock.craftsnet.intellijplugin.utils.Utils
 
 abstract class CustomInspectionRule : Updatable {
 

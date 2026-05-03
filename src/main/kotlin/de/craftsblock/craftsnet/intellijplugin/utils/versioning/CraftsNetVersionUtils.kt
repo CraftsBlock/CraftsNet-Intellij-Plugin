@@ -1,8 +1,8 @@
-package de.craftsblock.craftsnet.intellijplugin.uitls.versioning
+package de.craftsblock.craftsnet.intellijplugin.utils.versioning
 
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.project.Project
-import de.craftsblock.craftsnet.intellijplugin.uitls.ModuleUtils
+import de.craftsblock.craftsnet.intellijplugin.utils.ModuleUtils
 import kotlin.collections.get
 
 object CraftsNetVersionUtils {
