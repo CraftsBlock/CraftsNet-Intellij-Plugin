@@ -1,5 +1,5 @@
 [versions]
-kotlin = "2.2.0-RC2"
+kotlin = "2.2.0"
 
 intellij-platform = "2.13.1"
 intellij-ide = "2025.2"
