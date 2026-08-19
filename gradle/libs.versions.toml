@@ -1,6 +1,6 @@
 [versions]
-intellij-platform-plugin = "2.16.0"
 kotlin = "2.4.0"
+intellij-platform-plugin = "2.18.1"
 
 intellij-ide = "2026.2"
 intellij-since = "262"
