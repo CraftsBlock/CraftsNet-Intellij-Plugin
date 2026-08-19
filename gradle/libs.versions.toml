@@ -2,7 +2,7 @@
 kotlin = "2.2.0"
 intellij-platform-plugin = "2.16.0"
 
-intellij-ide = "262.5752.32-EAP"
+intellij-ide = "2026.2"
 intellij-since = "262"
 intellij-until = "262.*"
 
